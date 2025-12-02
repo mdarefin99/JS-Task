@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevPortfolio | Theme Toggle</title>
+    <style>
+       
+        :root {
+            
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --header-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --card-border: #e0e0e0;
+            --accent-color: #007bff;
+            --btn-bg: #333333;
+            --btn-text: #ffffff;
+        }
+
+       
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --header-bg: #1e1e1e;
+            --card-bg: #1e1e1e;
+            --card-border: #333333;
+            --accent-color: #66b2ff;
+            --btn-bg: #ffffff;
+            --btn-text: #121212;
+        }
+
+       
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+          
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        
+        nav {
+            background-color: var(--header-bg);
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        #theme-toggle {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, background-color 0.3s, color 0.3s;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+       
+        main {
+            flex: 1;
+            padding: 50px 10%;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+     
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+        }
+
+     
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--header-bg);
+            border-top: 1px solid var(--card-border);
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <nav>
+        <div class="logo">MDAREFIN.dev</div>
+      
+        <button id="theme-toggle">Switch to Dark Mode</button>
+    </nav>
+
+   
+    <main>
+        <section class="hero">
+            <h1>Welcome to my Portfolio</h1>
+            <p>I build interactive web experiences.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Recent Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Online Store Page</h3>
+                    <p>Displays Electronic Product's Specification, Price, Buy ETC.</p>
+                </div>
+                <div class="card">
+                    <h3>Travel Dashboard</h3>
+                    <p>Shows Best Locations to Travel</p>
+                </div>
+                <div class="card">
+                    <h3>Personal Portfolio</h3>
+                    <p>Shows my Bio-Data</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MD AREFIN. All rights reserved.</p>
+    </footer>
+
+    
+    <script src="03.js" defer></script>S
+</body>
+</html>
