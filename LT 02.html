@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedition Travel - Dream Destinations</title>
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: pink;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        p.subtitle {
+            color: #7f8c8d;
+            margin-top: 10px;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background-color: #000;
+        }
+
+       
+        #slider-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 2px solid white;
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .nav-btn:hover {
+            background-color: white;
+            color: #333;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        /* Image Caption */
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .caption h2 {
+            margin: 0;
+            font-size: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        @media (max-width: 768px) {
+            .slider-wrapper {
+                height: 300px;
+                width: 95%;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Expedition</h1>
+        <p class="subtitle">Explore world's most breathtaking destinations</p>
+    </header>
+
+    <div class="slider-wrapper">
+       
+        <img id="slider-image">
+        
+      
+        <button id="prev-btn" class="nav-btn prev-btn">&#10094;</button>
+        <button id="next-btn" class="nav-btn next-btn">&#10095;</button>
+
+        
+        <div class="caption">
+            <h2 id="image-title">Loading...</h2>
+        </div>
+    </div>
+    <script src="02.js" defer></script>
+</body>
+</html>
