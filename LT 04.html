@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        body { padding: 20px; }
+        
+        .input-group { margin-bottom: 20px; }
+        input { padding: 8px; margin-right: 10px; border: 1px solid gray; border-radius: 4px; }
+        
+        button { padding: 8px 15px; cursor: pointer; border: none; border-radius: 4px; color: white; }
+        #addBtn { background-color: green; }
+        #addBtn:hover { background-color: #218838; }
+        
+        .deleteBtn { background-color: red; }
+        .deleteBtn:hover { background-color: #c82333; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: whitesmoke; }
+    </style>
+</head>
+<body>
+
+    <h2>Student Management System</h2>
+
+    <div class="input-group">
+        <input type="text" id="nameInput" placeholder="Enter Name">
+        <input type="number" id="rollInput" placeholder="Enter Roll No">
+        <input type="text" id="deptInput" placeholder="Enter Department">
+        <button id="addBtn">Add Student</button>
+    </div>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script src="04.js"defer></script>
+</body>
+</html>
