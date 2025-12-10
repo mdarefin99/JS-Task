@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writer's Text Analyzer</title>
+    <style>
+
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 2px solid rgb(26, 23, 23);
+            border-radius: 5px;
+            font-size: 16px;
+            resize: vertical; /* Allows user to resize height only */
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            margin-bottom: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            margin-top: 1.5rem;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            border-left: 5px solid #007bff;
+            display: none; /* Hidden by default */
+        }
+
+        .reversed-text-box {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            word-wrap: break-word;
+            font-family: monospace;
+            color: #d63384; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>📝 Text Analyzer</h2>
+        
+        <textarea id="inputText" placeholder="type your paragraph here..."></textarea>
+        
+        <button id="analyzeBtn">Analyze Text</button>
+
+        <div id="results">
+            </div>
+    </div>
+
+    <script>
+        // Elements
+        const textInput = document.getElementById('inputText');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const resultsDiv = document.getElementById('results');
+
+        //Adding Event Listener
+        analyzeBtn.addEventListener('click', function() {
+            // Get the value from the textarea
+            const text = textInput.value;
+
+            /* Handling Empty Input*/
+            if (!text.trim()) {
+                resultsDiv.style.display = 'block';
+                resultsDiv.innerHTML = '<p style="color: red; text-align: center;">Please enter some text to analyze.</p>';
+                return;
+            }
+
+           
+
+            // Character Count (Length)
+            const charCount = text.length;
+
+            /* Word Count We trim whitespace from ends, then split by one or more spaces (regex /\s+/)
+             this handles multiple spaces between words correctly.*/
+            const wordsArray = text.trim().split(/\s+/);
+            const wordCount = wordsArray.length;
+
+            // Reverse Text
+            // Split into array of chars -> Reverse array -> Join back to string
+            const reversedText = text.split('').reverse().join('');
+
+            // Display results
+            resultsDiv.innerHTML = `
+                <div class="stat-item"><strong>Total Characters:</strong> ${charCount}</div>
+                <div class="stat-item"><strong>Total Words:</strong> ${wordCount}</div>
+                <div class="stat-item">
+                    <strong>Reversed Text:</strong>
+                    <div class="reversed-text-box">${reversedText}</div>
+                </div>
+            `;
+
+            resultsDiv.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
