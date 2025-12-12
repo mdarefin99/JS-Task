@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Style Manipulation</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 40px 10px;
+      background: skyblue;
+    }
+
+    .panel {
+      background:lightcyan;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px black;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: 1px solid black;
+      border-radius: 6px;
+      background: cyan;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .sample {
+      padding: 18px;
+      border: solid black;
+      line-height: 1.6;
+      transition: background-color 250ms ease, font-size 160ms ease, text-align 160ms ease;
+      font-size: 16px;
+      text-align: left;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="panel">
+    <h2>Dynamic Style Controlling</h2>
+
+    <div class="controls">
+      <button onclick="changeBackgroundColor()">Change Background Color</button>
+      <button onclick="increaseFontSize()">Increase Font Size</button>
+      <button onclick="centerText()">Center Text</button>
+      <button onclick="resetStyle()">Reset Style</button>
+    </div>
+
+    <p id="sampleText" class="sample">
+        This is a sample paragraph. Use the buttons above to dynamically change its styles, including background color, font size, and text alignment. The current styles are displayed below.
+    </p>
+
+    <div class="meta" id="metaInfo">
+      Font size: <span id="fontSizeInfo">16px</span> · Alignment:
+      <span id="alignInfo">left</span> · Background:
+      <span id="bgInfo">transparent</span>
+    </div>
+  </div>
+
+  <script>
+    const sample = document.getElementById('sampleText');
+    const fontSizeInfo = document.getElementById('fontSizeInfo');
+    const alignInfo = document.getElementById('alignInfo');
+    const bgInfo = document.getElementById('bgInfo');
+
+    const computed = window.getComputedStyle(sample);
+    const defaultStyle = {
+      backgroundColor: "transparent",
+      fontSize: computed.fontSize,
+      textAlign: computed.textAlign
+    };
+
+    function updateMeta() {
+      const cs = window.getComputedStyle(sample);
+      fontSizeInfo.textContent = cs.fontSize;
+      alignInfo.textContent = cs.textAlign;
+
+      const bg = (cs.backgroundColor === 'ff000000' || cs.backgroundColor === 'rgba(0, 0, 0, 0)')
+                    ? 'transparent'
+                    : cs.backgroundColor;
+
+      bgInfo.textContent = bg;
+    }
+
+    function changeBackgroundColor() {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+
+      sample.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      updateMeta();
+    }
+
+    function increaseFontSize() {
+      let current = parseFloat(window.getComputedStyle(sample).fontSize);
+      let next = current + 2;
+      sample.style.fontSize = next + "px";
+      updateMeta();
+    }
+
+    function centerText() {
+      sample.style.textAlign = "center";
+      updateMeta();
+    }
+
+    function resetStyle() {
+      sample.style.backgroundColor = defaultStyle.backgroundColor;
+      sample.style.fontSize = defaultStyle.fontSize;
+      sample.style.textAlign = defaultStyle.textAlign;
+
+      updateMeta();
+    }
+
+    updateMeta();
+  </script>
+
+</body>
+</html>
